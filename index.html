@@ -1,20 +1,80 @@
+<!DOCTYPE html>
 <html>
     <head>
         <title>Kronplatz</title>
+        <link rel="stylesheet" href="styles.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&display=swap"
+            rel="stylesheet"
+        />
         <script>
             setTimeout(function () {
                 location.reload();
-            }, 300000); // 5 minutes in milliseconds
+            }, 275000); // 5 minutes in milliseconds
+
+            function updateCountdown() {
+                const targetDate = new Date(
+                    'March 21, 2025 15:00:00 GMT+0100'
+                ).getTime();
+                const now = new Date().getTime();
+                const difference = targetDate - now;
+
+                if (difference <= 0) {
+                    document.querySelector('.countdown').innerHTML =
+                        'Countdown expired!';
+                    return;
+                }
+
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor(
+                    (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+                );
+                const minutes = Math.floor(
+                    (difference % (1000 * 60 * 60)) / (1000 * 60)
+                );
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                // Ensure two-digit format
+                const formattedDays = days.toString().padStart(2, '0');
+                const formattedHours = hours.toString().padStart(2, '0');
+                const formattedMinutes = minutes.toString().padStart(2, '0');
+                const formattedSeconds = seconds.toString().padStart(2, '0');
+
+                document.querySelector('.countdown').innerHTML = `
+            ${formattedDays} : ${formattedHours} : ${formattedMinutes} : ${formattedSeconds}
+        `;
+            }
+
+            setInterval(updateCountdown, 1000);
+            window.onload = updateCountdown;
+
+            window.onload = function () {
+                const header = document.querySelector('header');
+                const shouldReverse = Math.random() < 0.5;
+
+                if (shouldReverse) {
+                    header.classList.add('reverse');
+                }
+            };
         </script>
     </head>
 
-    <body style="margin: 0; padding: 0">
-        <iframe
-            src="https://webtv.feratel.com/webtv/?cam=6121&design=v3&c0=0&c2=0&lg=de&s=0&lc=6150"
-            width="100%"
-            height="100%"
-            frameborder="0"
-            scrolling="no"
-        ></iframe>
+    <body>
+        <div class="container">
+            <header>
+                <img src="logo.svg" alt="23G logo" />
+                <h1 class="barlow">Dromen van wintersport.</h1>
+            </header>
+            <iframe
+                src="https://webtv.feratel.com/webtv/?cam=6121&design=v3&c0=0&c2=0&lg=de&s=0&lc=6150"
+                width="100%"
+                height="100%"
+                frameborder="0"
+                scrolling="no"
+            ></iframe>
+            <div class="countdown barlow"></div>
+        </div>
     </body>
 </html>
