@@ -43,9 +43,18 @@
                 const formattedMinutes = minutes.toString().padStart(2, '0');
                 const formattedSeconds = seconds.toString().padStart(2, '0');
 
-                document.querySelector('.countdown').innerHTML = `
-            ${formattedDays} : ${formattedHours} : ${formattedMinutes} : ${formattedSeconds}
-        `;
+                document.querySelector(
+                    '.countdown-days'
+                ).innerHTML = `${formattedDays} <span class="small">dagen</span>`;
+                document.querySelector(
+                    '.countdown-hours'
+                ).innerHTML = `${formattedHours} <span class="small">uren</span>`;
+                document.querySelector(
+                    '.countdown-minutes'
+                ).innerHTML = `${formattedMinutes} <span class="small">minuten</span>`;
+                document.querySelector(
+                    '.countdown-seconds'
+                ).innerHTML = `${formattedSeconds} <span class="small">seconden</span>`;
             }
 
             setInterval(updateCountdown, 1000);
@@ -75,7 +84,12 @@
                 frameborder="0"
                 scrolling="no"
             ></iframe>
-            <div class="countdown barlow"></div>
+            <div class="countdown barlow">
+                <div class="countdown-block countdown-days"></div>
+                <div class="countdown-block countdown-hours"></div>
+                <div class="countdown-block countdown-minutes"></div>
+                <div class="countdown-block countdown-seconds"></div>
+            </div>
         </div>
     </body>
 </html>
