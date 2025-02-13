@@ -20,10 +20,12 @@
                     const temp = data.current.temperature_2m;
                     const windSpeed = data.current.wind_speed_10m;
 
-                    document.querySelector('.weather').innerHTML = `
-                        <p>Temperatuur: ${temp}°C</p>
-                        <p>Windsnelheid: ${windSpeed} km/h</p>
-                    `;
+                    document.querySelector(
+                        '.temp'
+                    ).innerHTML = `Temp: ${temp}°C`;
+                    document.querySelector(
+                        '.wind'
+                    ).innerHTML = `Wind: ${windSpeed} km/h`;
                 } catch (error) {
                     document.querySelector('.weather').innerHTML =
                         'Fout bij het laden van weergegevens.';
@@ -100,7 +102,10 @@
                     <div class="countdown-block countdown-minutes"></div>
                     <div class="countdown-block countdown-seconds"></div>
                 </div>
-                <div class="weather barlow"></div>
+                <div class="weather barlow">
+                    <div class="temp"></div>
+                    <div class="wind"></div>
+                </div>
             </footer>
         </div>
     </body>
