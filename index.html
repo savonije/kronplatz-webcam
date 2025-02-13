@@ -11,6 +11,25 @@
             rel="stylesheet"
         />
         <script>
+            async function fetchWeather() {
+                try {
+                    const response = await fetch(
+                        'https://api.open-meteo.com/v1/forecast?latitude=46.73&longitude=11.95&current=temperature_2m,wind_speed_10m'
+                    );
+                    const data = await response.json();
+                    const temp = data.current.temperature_2m;
+                    const windSpeed = data.current.wind_speed_10m;
+
+                    document.querySelector('.weather').innerHTML = `
+                        <p>Temperatuur: ${temp}°C</p>
+                        <p>Windsnelheid: ${windSpeed} km/h</p>
+                    `;
+                } catch (error) {
+                    document.querySelector('.weather').innerHTML =
+                        'Fout bij het laden van weergegevens.';
+                }
+            }
+
             setTimeout(function () {
                 location.reload();
             }, 275000); // 5 minutes in milliseconds
@@ -21,13 +40,11 @@
                 ).getTime();
                 const now = new Date().getTime();
                 const difference = targetDate - now;
-
                 if (difference <= 0) {
                     document.querySelector('.countdown').innerHTML =
                         'Countdown expired!';
                     return;
                 }
-
                 const days = Math.floor(difference / (1000 * 60 * 60 * 24));
                 const hours = Math.floor(
                     (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
@@ -36,47 +53,38 @@
                     (difference % (1000 * 60 * 60)) / (1000 * 60)
                 );
                 const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-                // Ensure two-digit format
-                const formattedDays = days.toString().padStart(2, '0');
-                const formattedHours = hours.toString().padStart(2, '0');
-                const formattedMinutes = minutes.toString().padStart(2, '0');
-                const formattedSeconds = seconds.toString().padStart(2, '0');
-
                 document.querySelector(
                     '.countdown-days'
-                ).innerHTML = `${formattedDays} <span class="small">dagen</span>`;
+                ).innerHTML = `${days} <span class="small">dagen</span>`;
                 document.querySelector(
                     '.countdown-hours'
-                ).innerHTML = `${formattedHours} <span class="small">uren</span>`;
+                ).innerHTML = `${hours} <span class="small">uren</span>`;
                 document.querySelector(
                     '.countdown-minutes'
-                ).innerHTML = `${formattedMinutes} <span class="small">minuten</span>`;
+                ).innerHTML = `${minutes} <span class="small">minuten</span>`;
                 document.querySelector(
                     '.countdown-seconds'
-                ).innerHTML = `${formattedSeconds} <span class="small">seconden</span>`;
+                ).innerHTML = `${seconds} <span class="small">seconden</span>`;
             }
 
             setInterval(updateCountdown, 1000);
-            window.onload = updateCountdown;
-
             window.onload = function () {
+                updateCountdown();
+                fetchWeather();
                 const header = document.querySelector('header');
-                const shouldReverse = Math.random() < 0.5;
-
-                if (shouldReverse) {
+                if (Math.random() < 0.5) {
                     header.classList.add('reverse');
                 }
             };
         </script>
     </head>
-
     <body>
         <div class="container">
             <header>
                 <img src="logo.svg" alt="23G logo" />
                 <h1 class="barlow">Dromen van wintersport.</h1>
             </header>
+
             <iframe
                 src="https://webtv.feratel.com/webtv/?cam=6121&design=v3&c0=0&c2=0&lg=de&s=0&lc=6150"
                 width="100%"
@@ -84,12 +92,16 @@
                 frameborder="0"
                 scrolling="no"
             ></iframe>
-            <div class="countdown barlow">
-                <div class="countdown-block countdown-days"></div>
-                <div class="countdown-block countdown-hours"></div>
-                <div class="countdown-block countdown-minutes"></div>
-                <div class="countdown-block countdown-seconds"></div>
-            </div>
+
+            <footer>
+                <div class="countdown barlow">
+                    <div class="countdown-block countdown-days"></div>
+                    <div class="countdown-block countdown-hours"></div>
+                    <div class="countdown-block countdown-minutes"></div>
+                    <div class="countdown-block countdown-seconds"></div>
+                </div>
+                <div class="weather barlow"></div>
+            </footer>
         </div>
     </body>
 </html>

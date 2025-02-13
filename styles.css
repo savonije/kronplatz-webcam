@@ -59,7 +59,6 @@ iframe {
     color: var(--light-color);
     font-size: 3rem;
     gap: 0.5rem;
-    padding: 0 2rem;
 }
 
 .countdown-block {
@@ -71,6 +70,23 @@ iframe {
 .countdown .small {
     display: block;
     font-size: 1rem;
+}
+
+.weather {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: right;
+    font-size: 2rem;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+    padding: 2rem;
 }
 
 .logo-circle {
