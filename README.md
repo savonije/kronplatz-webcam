@@ -4,7 +4,7 @@ A simple web page displaying a live webcam feed from Kronplatz.
 
 ## Overview
 
-This project consists of an HTML file (`index.html`), a CSS file (`styles.css`), and an SVG logo (`logo.svg`). The HTML file likely embeds a webcam feed from Kronplatz, styled using the provided CSS.
+This project consists of an HTML file (`index.html`), a CSS file (`styles.css`), and an SVG logo (`logo.svg`). The HTML file embeds a webcam feed from Kronplatz, styled using the provided CSS.
 
 ## Usage
 
