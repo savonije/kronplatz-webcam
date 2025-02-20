@@ -68,14 +68,24 @@
             window.onload = function () {
                 updateCountdown();
                 fetchWeather();
+
                 const header = document.querySelector('header');
                 if (Math.random() < 0.5) {
                     header.classList.add('reverse');
                 }
+
+                setTimeout(() => {
+                    document.querySelector('.splash-screen').style.display =
+                        'none';
+                }, 3500);
             };
         </script>
     </head>
     <body>
+        <div class="splash-screen">
+            <img src="logo.svg" alt="23G Logo" />
+        </div>
+
         <div class="container">
             <header>
                 <img src="logo.svg" alt="23G logo" />
