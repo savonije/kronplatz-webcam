@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="styles.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
         <script>
             async function fetchWeather() {
                 try {
@@ -16,12 +17,10 @@
                     const temp = data.current.temperature_2m;
                     const windSpeed = data.current.wind_speed_10m;
 
-                    document.querySelector(
-                        '.temp'
-                    ).innerHTML = `Temp: ${temp}°C`;
+                    document.querySelector('.temp').innerHTML = `${temp}°C`;
                     document.querySelector(
                         '.wind'
-                    ).innerHTML = `Wind: ${windSpeed} km/h`;
+                    ).innerHTML = `${windSpeed} km/h`;
                 } catch (error) {
                     document.querySelector('.weather').innerHTML =
                         'Fout bij het laden van weergegevens.';
@@ -98,9 +97,16 @@
                     <div class="countdown-block countdown-minutes"></div>
                     <div class="countdown-block countdown-seconds"></div>
                 </div>
+
                 <div class="weather barlow">
-                    <div class="temp"></div>
-                    <div class="wind"></div>
+                    <div class="weather-details">
+                        <img src="./thermo.svg" />
+                        <span class="temp"></span>
+                    </div>
+                    <div class="weather-details">
+                        <img src="./wind.svg" />
+                        <span class="wind"></span>
+                    </div>
                 </div>
             </footer>
         </div>
