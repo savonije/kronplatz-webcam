@@ -14,7 +14,7 @@
 }
 
 body {
-    margin: 2rem 0;
+    margin: 0;
     padding: 0;
     background-color: var(--dark-color);
     margin-left: auto;
@@ -47,7 +47,7 @@ header {
     justify-content: space-between;
     text-transform: uppercase;
     width: 100%;
-    padding: 0 2rem;
+    padding: 2rem;
 }
 
 header.reverse {
@@ -60,12 +60,8 @@ header.reverse {
     align-items: center;
     justify-content: center;
     width: 100vw;
-    height: 95vh;
+    height: 100vh;
     margin: 0 auto;
-}
-
-iframe {
-    margin-top: 2rem;
 }
 
 .barlow {
