@@ -7,7 +7,7 @@ async function fetchWeather() {
         const temp = data.current.temperature_2m;
         const windSpeed = data.current.wind_speed_10m;
 
-        document.querySelector('.temp').innerHTML = `${temp}°C`;
+        document.querySelector('.temp').innerHTML = `${temp} &deg;C`;
         document.querySelector('.wind').innerHTML = `${windSpeed} km/h`;
     } catch (error) {
         document.querySelector('.weather').innerHTML =
