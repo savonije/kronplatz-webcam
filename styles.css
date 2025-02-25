@@ -29,15 +29,16 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: var(--dark-color);
     display: flex;
     justify-content: center;
     align-items: center;
+    background: var(--dark-color);
     z-index: 9999;
 
-    img {
-        width: 200px;
-        animation: pulse 2s infinite ease-in-out;
+    video {
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
     }
 }
 
@@ -124,16 +125,4 @@ footer {
 
 .logo-stripes {
     fill: var(--light-color);
-}
-
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.25);
-    }
-    100% {
-        transform: scale(1);
-    }
 }
