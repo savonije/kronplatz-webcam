@@ -50,10 +50,6 @@ header {
     padding: 2rem;
 }
 
-header.reverse {
-    flex-direction: row-reverse;
-}
-
 .container {
     display: flex;
     flex-direction: column;
@@ -93,10 +89,10 @@ header.reverse {
     display: flex;
     gap: 3rem;
     text-align: right;
-    font-size: 3rem;
+    font-size: 2.5rem;
 
     img {
-        height: 3.5rem;
+        height: 3rem;
     }
 }
 
@@ -108,9 +104,8 @@ header.reverse {
 
 footer {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    gap: 2rem;
     width: 100%;
     padding: 1rem 2rem;
 }

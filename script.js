@@ -52,11 +52,6 @@ window.onload = function () {
     updateCountdown();
     fetchWeather();
 
-    const header = document.querySelector('header');
-    if (Math.random() < 0.5) {
-        header.classList.add('reverse');
-    }
-
     const video = document.querySelector('.splash-screen video');
     video.addEventListener('ended', () => {
         document.querySelector('.splash-screen').style.display = 'none';
