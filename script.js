@@ -52,8 +52,7 @@ window.onload = function () {
     updateCountdown();
     fetchWeather();
 
-    const video = document.querySelector('.splash-screen video');
-    video.addEventListener('ended', () => {
+    setTimeout(() => {
         document.querySelector('.splash-screen').style.display = 'none';
-    });
+    }, 3500);
 };
